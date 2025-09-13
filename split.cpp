@@ -23,19 +23,16 @@ void split(Node*& in, Node*& odds, Node*& evens)
     return;
   }
 
-  // Save the current node and move input pointer forward
   Node* curr = in;
   in = in->next;
   curr->next = NULL;
 
-  // Place the current node into the correct list (odd/even)
   if (curr->value % 2 == 0) {
-    appendRecursive(evens, curr)
+    appendRecursive(evens, curr);
   } else {
-    appendRecursive(odds, curr)
+    appendRecursive(odds, curr);
   }
 
-  // Recursive call on the remainder of the list
   split(in, odds, evens);
 }
 
@@ -44,6 +41,6 @@ void appendRecursive(Node*& list, Node* node) {
   if (list == NULL) {
     list = node;
   } else {
-    appendRecursive(list->next, node)
+    appendRecursive(list->next, node);
   }
 }
